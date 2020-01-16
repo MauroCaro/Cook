@@ -11,8 +11,9 @@ import retrofit2.Response
 
 class RecipesPresenter(val lister: RecipeListener) {
 
+  val api = Repository.provideClient().create(API::class.java)
+
   fun getRecipes(){
-    var api = Repository.provideClient().create(API::class.java)
     val call = api.getRecipes()
 
     call.enqueue(object : Callback<List<Recipes>> {
@@ -20,10 +21,13 @@ class RecipesPresenter(val lister: RecipeListener) {
         var listRecipes = response.body() as List<Recipes>
         lister.showRecipes(listRecipes)
       }
-
       override fun onFailure(call: Call<List<Recipes>>, t: Throwable) {
-        Log.i("TAG","a")
+        lister.showError()
       }
     })
+  }
+
+  fun getRecipeDetail(idRecipe : Int){
+ 
   }
 }

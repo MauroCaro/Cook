@@ -11,7 +11,7 @@ import com.generic.cook.view.RecipesDetailactivity
 
 class RecipeAdapter(
     val context: Context,
-    var list: MutableList<Recipes>
+    var list: List<Recipes>
 ) : androidx.recyclerview.widget.RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {

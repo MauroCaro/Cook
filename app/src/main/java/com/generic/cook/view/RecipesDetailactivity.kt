@@ -13,11 +13,17 @@ class RecipesDetailactivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_recipe_detail)
+    var idDetail = 0
+    intent.extras?.let {
+      idDetail = it.getInt(ID_SELECTED)
+    }
+
+
   }
 
 
   companion object {
-    const val ID_SELECTED = "Id"
+     const val ID_SELECTED = "Id"
     fun start(context: Context, IdRecipe: Int? = null) {
       val intent = Intent(context, RecipesDetailactivity::class.java)
       IdRecipe.let {
